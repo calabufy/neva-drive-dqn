@@ -1,0 +1,1 @@
+# Prepare the map for the simulation environment.

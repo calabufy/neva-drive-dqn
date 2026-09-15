@@ -1,0 +1,1 @@
+# Check the end of the episode in the simulation environment.

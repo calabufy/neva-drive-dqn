@@ -1,0 +1,1 @@
+# View map without running the simulation.

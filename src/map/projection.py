@@ -1,0 +1,1 @@
+# Convert coordinates (latitude, longitude) to pixel coordinates on a map image.

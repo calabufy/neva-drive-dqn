@@ -1,0 +1,1 @@
+# Renders the simulation environment for visualization.

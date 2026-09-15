@@ -1,0 +1,1 @@
+# Describe new agent state in the simulation environment.
