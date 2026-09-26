@@ -1,0 +1,22 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="tests/test_routing.py\nПроверить map/routing.py на контрольных графах"];
+n2 [label="tests/test_geometry.py\nПроверить map/geometry.py: расстояния, коридоры и\nпересечения"];
+n3 [label="tests/test_vehicle.py\nПроверить simulation/vehicle.py: движение и\nфизические пределы"];
+n4 [label="tests/test_rules.py\nПроверить simulation/rules.py: маршрут, события и\nотсутствие дубликатов"];
+n5 [label="tests/test_environment.py\nПроверить environment/env.py: reset(), step(),\nзавершение и воспроизводимость"];
+passed [label="Все проверки пройдены?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+ok [label="Успешный отчёт тестового запуска", fillcolor="#DBEAFE"];
+fail [label="Отчёт об ошибках с указанием тестов", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> passed [label=""];
+passed -> ok [label="Да"];
+passed -> fail [label="Нет"];
+}

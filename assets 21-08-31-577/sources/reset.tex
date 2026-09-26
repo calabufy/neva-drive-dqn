@@ -1,0 +1,37 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\tikzset{
+  process/.style={rectangle,draw,rounded corners,align=center,
+    text width=10cm,minimum height=10mm,font=\small},
+  decision/.style={diamond,draw,aspect=3,align=center,
+    text width=4cm,inner sep=1pt,font=\small},
+  terminal/.style={rectangle,draw,rounded corners=5mm,
+    align=center,text width=7cm,minimum height=8mm,font=\small},
+  flow/.style={-{Stealth},thick}
+}
+\begin{document}
+\begin{tikzpicture}[node distance=6mm and 18mm]
+\node[terminal] (start) {Начало};
+\node[process,below=of start] (n1) {\texttt{environment/env.py}\\ Принять seed и параметры сценария};
+\draw[flow] (start) -- (n1);
+\node[process,below=of n1] (n2) {\texttt{map/routing.py}\\ Построить маршрут, если готовый не передан};
+\draw[flow] (n1) -- (n2);
+\node[process,below=of n2] (n3) {\texttt{simulation/simulator.py}\\ Создать начальное состояние из simulation/state.py};
+\draw[flow] (n2) -- (n3);
+\node[process,below=of n3] (n4) {\texttt{simulation/traffic.py}\\ Установить начальные состояния светофоров};
+\draw[flow] (n3) -- (n4);
+\node[process,below=of n4] (n5) {\texttt{simulation/rules.py}\\ Сбросить историю правил; определить RouteState};
+\draw[flow] (n4) -- (n5);
+\node[process,below=of n5] (n6) {\texttt{environment/observations.py}\\ Собрать и нормализовать наблюдение};
+\draw[flow] (n5) -- (n6);
+\node[process,below=of n6] (n7) {\texttt{environment/env.py}\\ Вернуть observation, info};
+\draw[flow] (n6) -- (n7);
+\node[terminal,below=of n7] (end) {Готово};
+\draw[flow] (n7) -- (end);
+\end{tikzpicture}
+
+\end{document}

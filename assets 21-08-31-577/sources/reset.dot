@@ -1,0 +1,22 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="environment/env.py\nПринять seed и параметры сценария"];
+n2 [label="map/routing.py\nПостроить маршрут, если готовый не передан"];
+n3 [label="simulation/simulator.py\nСоздать начальное состояние из simulation/state.py"];
+n4 [label="simulation/traffic.py\nУстановить начальные состояния светофоров"];
+n5 [label="simulation/rules.py\nСбросить историю правил; определить RouteState"];
+n6 [label="environment/observations.py\nСобрать и нормализовать наблюдение"];
+n7 [label="environment/env.py\nВернуть observation, info"];
+end [label="Готово", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> n7 [label=""];
+n7 -> end [label=""];
+}

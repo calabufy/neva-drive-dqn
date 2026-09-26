@@ -1,0 +1,48 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\tikzset{
+  process/.style={rectangle,draw,rounded corners,align=center,
+    text width=10cm,minimum height=10mm,font=\small},
+  decision/.style={diamond,draw,aspect=3,align=center,
+    text width=4cm,inner sep=1pt,font=\small},
+  terminal/.style={rectangle,draw,rounded corners=5mm,
+    align=center,text width=7cm,minimum height=8mm,font=\small},
+  flow/.style={-{Stealth},thick}
+}
+\begin{document}
+\begin{tikzpicture}[node distance=6mm and 18mm]
+\node[terminal] (start) {Начало};
+\node[process,below=of start] (n1) {\texttt{environment/env.py}\\ Принять и проверить действие};
+\draw[flow] (start) -- (n1);
+\node[process,below=of n1] (n2) {\texttt{simulation/controls.py}\\ Преобразовать действие в педали и руление};
+\draw[flow] (n1) -- (n2);
+\node[process,below=of n2] (n3) {\texttt{simulation/simulator.py}\\ Начать очередной физический шаг};
+\draw[flow] (n2) -- (n3);
+\node[process,below=of n3] (n4) {\texttt{simulation/traffic.py}\\ Определить сигналы на интервале шага};
+\draw[flow] (n3) -- (n4);
+\node[process,below=of n4] (n5) {\texttt{simulation/vehicle.py}\\ Рассчитать новое состояние машинки};
+\draw[flow] (n4) -- (n5);
+\node[process,below=of n5] (n6) {\texttt{map/geometry.py}\\ По запросу правил вычислить расстояния и пересечения};
+\draw[flow] (n5) -- (n6);
+\node[process,below=of n6] (n7) {\texttt{simulation/rules.py}\\ Обновить RouteState; зарегистрировать события};
+\draw[flow] (n6) -- (n7);
+\node[process,below=of n7] (n8) {\texttt{environment/termination.py}\\ Проверить завершение и лимит времени};
+\draw[flow] (n7) -- (n8);
+
+\node[decision,below=of n8] (more) {Нужен ещё шаг и эпизод активен?};
+\draw[flow] (n8) -- (more);
+\draw[flow] (more.west) -- ++(-2,0) |- node[pos=0.25,left] {Да} (n3.west);
+\node[process,below=of more] (reward) {\texttt{environment/rewards.py}\\ Рассчитать награду по выполненным шагам};
+\draw[flow] (more) -- node[right] {Нет} (reward);
+\node[process,below=of reward] (obs) {\texttt{environment/observations.py}\\ Сформировать новое наблюдение};
+\draw[flow] (reward) -- (obs);
+\node[terminal,below=of obs] (end) {\texttt{environment/env.py}\\ Вернуть observation, reward,\\ terminated, truncated, info};
+\draw[flow] (obs) -- (end);
+
+\end{tikzpicture}
+
+\end{document}

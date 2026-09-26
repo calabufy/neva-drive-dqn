@@ -1,0 +1,14 @@
+{
+  "map_data_version": 1,
+  "coordinate_system": "local_xy_m",
+  "start": {
+    "x_m": 1376.4371115381234,
+    "y_m": 1140.4715388575926
+  },
+  "goal": {
+    "x_m": 1359.1687260528688,
+    "y_m": 1080.032189659202
+  },
+  "start_building_osm_id": 53269721,
+  "goal_building_osm_id": null
+}

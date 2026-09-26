@@ -1,0 +1,73 @@
+<mxfile host="Electron">
+  <diagram name="Страница-1" id="PSoyRxSguJnKACs3IRad">
+    <mxGraphModel dx="863" dy="667" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-6" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-5" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-4" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;" value="Начало" vertex="1">
+          <mxGeometry height="40" width="80" x="280" y="80" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-8" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-7" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-18" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-5" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" target="4WV5WnjJ7vZr38-IWgv6-12">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-5" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="scripts/prepare_map.py&lt;div&gt;Читает configs/map.yaml и запускает подготовку карты&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="160" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-10" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-9" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-17" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-7" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0;entryY=0.5;entryDx=0;entryDy=0;dashed=1;dashPattern=8 8;" target="4WV5WnjJ7vZr38-IWgv6-13">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-7" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/preprocessing.py&lt;div&gt;Организует последовательность обработки&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="260" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-20" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-9" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-19" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-9" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/json_loader.py&lt;div&gt;Читает data/export.json и проверяет корректность ссылок между ними&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="360" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-12" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Внешний интерфейс взаимодействия с файлами генерации карты" vertex="1">
+          <mxGeometry height="30" width="230" x="560" y="175" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-13" parent="1" style="text;html=1;whiteSpace=wrap;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;rounded=0;" value="Внутрений интерфейс-аггрегатор всех функций" vertex="1">
+          <mxGeometry height="30" width="230" x="560" y="275" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-30" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-19" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-29" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-19" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/road_network.py&lt;div&gt;Формирует доступные направленные участки и ограничения переходов.&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="460" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-26" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-23" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" target="4WV5WnjJ7vZr38-IWgv6-25">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-23" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/preprocessing.py&lt;div&gt;Добавляет разметку из data/traffic.yaml&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="660" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-28" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-25" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-27" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-25" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/preprocessing.py&lt;div&gt;сохраняет готовую карту в data&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="760" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-27" parent="1" style="ellipse;whiteSpace=wrap;html=1;fillColor=none;" value="Конец" vertex="1">
+          <mxGeometry height="40" width="80" x="280" y="860" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-31" edge="1" parent="1" source="4WV5WnjJ7vZr38-IWgv6-29" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="4WV5WnjJ7vZr38-IWgv6-23" value="">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="4WV5WnjJ7vZr38-IWgv6-29" parent="1" style="rounded=0;whiteSpace=wrap;html=1;fillColor=none;" value="map/geometry.py&lt;div&gt;функция отрисовки коридоров +- d метров вокруг дороги&lt;/div&gt;" vertex="1">
+          <mxGeometry height="60" width="240" x="200" y="560" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

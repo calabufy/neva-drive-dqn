@@ -1,0 +1,774 @@
+# Программы симуляции, не реальные режимы городских светофоров.
+# Фазы повторяются в указанном порядке: red -> green.
+# Длительности заданы в секундах; обе границы диапазона включены.
+# Программы независимы: согласование светофоров перекрёстка здесь не задано.
+version: 1
+source: data/export.json
+generation:
+  seed: 42
+  min_duration_s: 5
+  max_duration_s: 30
+trafficlights:
+  - osm_type: node
+    osm_id: 223587
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 223589
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 223594
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 9
+  - osm_type: node
+    osm_id: 223609
+    phases:
+      - state: red
+        duration_s: 8
+      - state: green
+        duration_s: 26
+  - osm_type: node
+    osm_id: 223612
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 223628
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 246398
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 306504
+    phases:
+      - state: red
+        duration_s: 21
+      - state: green
+        duration_s: 24
+  - osm_type: node
+    osm_id: 306536
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 306537
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 27
+  - osm_type: node
+    osm_id: 306547
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 308175
+    phases:
+      - state: red
+        duration_s: 23
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 327730
+    phases:
+      - state: red
+        duration_s: 5
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 327756
+    phases:
+      - state: red
+        duration_s: 10
+      - state: green
+        duration_s: 27
+  - osm_type: node
+    osm_id: 327776
+    phases:
+      - state: red
+        duration_s: 15
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 327832
+    phases:
+      - state: red
+        duration_s: 11
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 327833
+    phases:
+      - state: red
+        duration_s: 8
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 327883
+    phases:
+      - state: red
+        duration_s: 8
+      - state: green
+        duration_s: 16
+  - osm_type: node
+    osm_id: 327942
+    phases:
+      - state: red
+        duration_s: 24
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 2384384
+    phases:
+      - state: red
+        duration_s: 6
+      - state: green
+        duration_s: 28
+  - osm_type: node
+    osm_id: 8087603
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 21746282
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 22
+  - osm_type: node
+    osm_id: 21746309
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 24
+  - osm_type: node
+    osm_id: 21746377
+    phases:
+      - state: red
+        duration_s: 23
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 21746383
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 21746384
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 21746436
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 35764661
+    phases:
+      - state: red
+        duration_s: 17
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 250587382
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 16
+  - osm_type: node
+    osm_id: 252131127
+    phases:
+      - state: red
+        duration_s: 16
+      - state: green
+        duration_s: 16
+  - osm_type: node
+    osm_id: 252131129
+    phases:
+      - state: red
+        duration_s: 26
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 1312324637
+    phases:
+      - state: red
+        duration_s: 26
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1584901238
+    phases:
+      - state: red
+        duration_s: 24
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1659158538
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 28
+  - osm_type: node
+    osm_id: 1659158539
+    phases:
+      - state: red
+        duration_s: 10
+      - state: green
+        duration_s: 19
+  - osm_type: node
+    osm_id: 1686646355
+    phases:
+      - state: red
+        duration_s: 13
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1686646357
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 1686646358
+    phases:
+      - state: red
+        duration_s: 15
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 1686646360
+    phases:
+      - state: red
+        duration_s: 6
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 1686646385
+    phases:
+      - state: red
+        duration_s: 30
+      - state: green
+        duration_s: 15
+  - osm_type: node
+    osm_id: 1686646392
+    phases:
+      - state: red
+        duration_s: 13
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 1686646398
+    phases:
+      - state: red
+        duration_s: 23
+      - state: green
+        duration_s: 27
+  - osm_type: node
+    osm_id: 1686646399
+    phases:
+      - state: red
+        duration_s: 11
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1686646400
+    phases:
+      - state: red
+        duration_s: 17
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1686646401
+    phases:
+      - state: red
+        duration_s: 9
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 1686646403
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 28
+  - osm_type: node
+    osm_id: 1686646404
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 13
+  - osm_type: node
+    osm_id: 1686646411
+    phases:
+      - state: red
+        duration_s: 23
+      - state: green
+        duration_s: 18
+  - osm_type: node
+    osm_id: 1686646422
+    phases:
+      - state: red
+        duration_s: 17
+      - state: green
+        duration_s: 16
+  - osm_type: node
+    osm_id: 1686646423
+    phases:
+      - state: red
+        duration_s: 9
+      - state: green
+        duration_s: 21
+  - osm_type: node
+    osm_id: 1686646467
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 1686646474
+    phases:
+      - state: red
+        duration_s: 8
+      - state: green
+        duration_s: 9
+  - osm_type: node
+    osm_id: 1686652003
+    phases:
+      - state: red
+        duration_s: 10
+      - state: green
+        duration_s: 30
+  - osm_type: node
+    osm_id: 1686652009
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 24
+  - osm_type: node
+    osm_id: 1686652010
+    phases:
+      - state: red
+        duration_s: 17
+      - state: green
+        duration_s: 17
+  - osm_type: node
+    osm_id: 1686652018
+    phases:
+      - state: red
+        duration_s: 19
+      - state: green
+        duration_s: 21
+  - osm_type: node
+    osm_id: 1686652020
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 5
+  - osm_type: node
+    osm_id: 1687392701
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 1687392702
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 1695842296
+    phases:
+      - state: red
+        duration_s: 29
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1695842297
+    phases:
+      - state: red
+        duration_s: 8
+      - state: green
+        duration_s: 14
+  - osm_type: node
+    osm_id: 1695842302
+    phases:
+      - state: red
+        duration_s: 10
+      - state: green
+        duration_s: 19
+  - osm_type: node
+    osm_id: 1695842327
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 28
+  - osm_type: node
+    osm_id: 1747815092
+    phases:
+      - state: red
+        duration_s: 21
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 1747815094
+    phases:
+      - state: red
+        duration_s: 21
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 1831922675
+    phases:
+      - state: red
+        duration_s: 14
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 1892304312
+    phases:
+      - state: red
+        duration_s: 24
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 1904982520
+    phases:
+      - state: red
+        duration_s: 16
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 2061171475
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 29
+  - osm_type: node
+    osm_id: 2226182056
+    phases:
+      - state: red
+        duration_s: 5
+      - state: green
+        duration_s: 24
+  - osm_type: node
+    osm_id: 3251534555
+    phases:
+      - state: red
+        duration_s: 20
+      - state: green
+        duration_s: 5
+  - osm_type: node
+    osm_id: 3443284580
+    phases:
+      - state: red
+        duration_s: 16
+      - state: green
+        duration_s: 30
+  - osm_type: node
+    osm_id: 4061479220
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 4061479221
+    phases:
+      - state: red
+        duration_s: 23
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 7281165684
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 20
+  - osm_type: node
+    osm_id: 8294914286
+    phases:
+      - state: red
+        duration_s: 29
+      - state: green
+        duration_s: 22
+  - osm_type: node
+    osm_id: 8295101708
+    phases:
+      - state: red
+        duration_s: 9
+      - state: green
+        duration_s: 9
+  - osm_type: node
+    osm_id: 8295101710
+    phases:
+      - state: red
+        duration_s: 20
+      - state: green
+        duration_s: 22
+  - osm_type: node
+    osm_id: 8295101711
+    phases:
+      - state: red
+        duration_s: 13
+      - state: green
+        duration_s: 21
+  - osm_type: node
+    osm_id: 8295141417
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 8295141418
+    phases:
+      - state: red
+        duration_s: 29
+      - state: green
+        duration_s: 28
+  - osm_type: node
+    osm_id: 8295141420
+    phases:
+      - state: red
+        duration_s: 11
+      - state: green
+        duration_s: 27
+  - osm_type: node
+    osm_id: 8295160028
+    phases:
+      - state: red
+        duration_s: 17
+      - state: green
+        duration_s: 26
+  - osm_type: node
+    osm_id: 8295160029
+    phases:
+      - state: red
+        duration_s: 16
+      - state: green
+        duration_s: 19
+  - osm_type: node
+    osm_id: 8295160045
+    phases:
+      - state: red
+        duration_s: 19
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 8295160048
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 9937657761
+    phases:
+      - state: red
+        duration_s: 5
+      - state: green
+        duration_s: 23
+  - osm_type: node
+    osm_id: 9937657777
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 23
+  - osm_type: node
+    osm_id: 9975895053
+    phases:
+      - state: red
+        duration_s: 5
+      - state: green
+        duration_s: 7
+  - osm_type: node
+    osm_id: 10020497807
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 10264718615
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 12230226899
+    phases:
+      - state: red
+        duration_s: 7
+      - state: green
+        duration_s: 21
+  - osm_type: node
+    osm_id: 12582188080
+    phases:
+      - state: red
+        duration_s: 13
+      - state: green
+        duration_s: 26
+  - osm_type: node
+    osm_id: 12582188084
+    phases:
+      - state: red
+        duration_s: 11
+      - state: green
+        duration_s: 22
+  - osm_type: node
+    osm_id: 12582188091
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 23
+  - osm_type: node
+    osm_id: 12582188098
+    phases:
+      - state: red
+        duration_s: 20
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 12582195237
+    phases:
+      - state: red
+        duration_s: 20
+      - state: green
+        duration_s: 30
+  - osm_type: node
+    osm_id: 12582195239
+    phases:
+      - state: red
+        duration_s: 11
+      - state: green
+        duration_s: 8
+  - osm_type: node
+    osm_id: 12582195242
+    phases:
+      - state: red
+        duration_s: 26
+      - state: green
+        duration_s: 18
+  - osm_type: node
+    osm_id: 12582195250
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 18
+  - osm_type: node
+    osm_id: 12582195251
+    phases:
+      - state: red
+        duration_s: 28
+      - state: green
+        duration_s: 6
+  - osm_type: node
+    osm_id: 12587149972
+    phases:
+      - state: red
+        duration_s: 25
+      - state: green
+        duration_s: 25
+  - osm_type: node
+    osm_id: 12587164119
+    phases:
+      - state: red
+        duration_s: 6
+      - state: green
+        duration_s: 17
+  - osm_type: node
+    osm_id: 12587164120
+    phases:
+      - state: red
+        duration_s: 15
+      - state: green
+        duration_s: 30
+  - osm_type: node
+    osm_id: 12600220134
+    phases:
+      - state: red
+        duration_s: 12
+      - state: green
+        duration_s: 11
+  - osm_type: node
+    osm_id: 12600220135
+    phases:
+      - state: red
+        duration_s: 22
+      - state: green
+        duration_s: 19
+  - osm_type: node
+    osm_id: 12753588320
+    phases:
+      - state: red
+        duration_s: 18
+      - state: green
+        duration_s: 10
+  - osm_type: node
+    osm_id: 12753588323
+    phases:
+      - state: red
+        duration_s: 19
+      - state: green
+        duration_s: 12
+  - osm_type: node
+    osm_id: 13237822070
+    phases:
+      - state: red
+        duration_s: 19
+      - state: green
+        duration_s: 30

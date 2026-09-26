@@ -1,0 +1,34 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="experiments/train.py\nПрочитать конфигурации; создать среду"];
+n2 [label="agents/dqn.py\nСоздать основную и целевую сети из agents/network.py"];
+n3 [label="agents/replay_buffer.py\nСоздать буфер опыта"];
+n4 [label="environment/env.py\nВыполнить reset()"];
+n5 [label="agents/dqn.py\nВыбрать случайное действие или лучшее по Q-оценкам"];
+n6 [label="environment/env.py\nВыполнить step(action)"];
+n7 [label="agents/replay_buffer.py\nСохранить переход"];
+n8 [label="agents/dqn.py\nЕсли опыт накоплен: выбрать пакет и обучить сеть;\nобновить целевую сеть по расписанию"];
+n9 [label="experiments/metrics.py\nОбновить показатели"];
+n10 [label="experiments/train.py\nПо расписанию сохранить метрики и состояние агента в\nruns/"];
+budget [label="Бюджет исчерпан?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+end [label="experiments/train.py\nСохранить итог; закрыть среду", fillcolor="#DBEAFE"];
+done [label="Эпизод завершён?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> n7 [label=""];
+n7 -> n8 [label=""];
+n8 -> n9 [label=""];
+n9 -> n10 [label=""];
+n10 -> budget [label=""];
+budget -> end [label="Да"];
+budget -> done [label="Нет"];
+done -> n4 [label="Да"];
+done -> n5 [label="Нет"];
+}

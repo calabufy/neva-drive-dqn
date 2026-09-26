@@ -1,0 +1,39 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\tikzset{
+  process/.style={rectangle,draw,rounded corners,align=center,
+    text width=10cm,minimum height=10mm,font=\small},
+  decision/.style={diamond,draw,aspect=3,align=center,
+    text width=4cm,inner sep=1pt,font=\small},
+  terminal/.style={rectangle,draw,rounded corners=5mm,
+    align=center,text width=7cm,minimum height=8mm,font=\small},
+  flow/.style={-{Stealth},thick}
+}
+\begin{document}
+\begin{tikzpicture}[node distance=6mm and 18mm]
+\node[terminal] (start) {Начало};
+\node[process,below=of start] (n1) {\texttt{scripts/view\_map.py}\\ Загрузить подготовленную карту};
+\draw[flow] (start) -- (n1);
+\node[process,below=of n1] (n2) {\texttt{rendering/camera.py}\\ Задать масштаб и видимую область};
+\draw[flow] (n1) -- (n2);
+\node[process,below=of n2] (n3) {\texttt{rendering/renderer.py}\\ Нарисовать карту и дорожные объекты};
+\draw[flow] (n2) -- (n3);
+\node[process,below=of n3] (n4) {\texttt{scripts/view\_map.py}\\ Получить события мыши и клавиатуры};
+\draw[flow] (n3) -- (n4);
+
+\node[decision,below=of n4] (quit) {Закрыть окно?};
+\draw[flow] (n4) -- (quit);
+\node[terminal,below=of quit] (end) {Освободить ресурсы; конец};
+\draw[flow] (quit) -- node[right] {Да} (end);
+\node[process,right=of quit] (update) {\texttt{rendering/camera.py}\\ Обновить камеру; преобразовать клик\\
+\texttt{map/geometry.py}\\ Найти выбранный объект};
+\draw[flow] (quit) -- node[above] {Нет} (update);
+\draw[flow] (update.north) |- (n3.east);
+
+\end{tikzpicture}
+
+\end{document}

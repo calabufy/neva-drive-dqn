@@ -1,0 +1,23 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="scripts/drive_manual.py\nПолучить клики А и Б"];
+n2 [label="rendering/camera.py\nПеревести координаты кликов в метры"];
+n3 [label="map/geometry.py\nНайти подходящие дорожные участки"];
+n4 [label="map/routing.py\nНайти разрешённый путь в дорожной сети"];
+found [label="Путь найден?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+accept [label="scripts/drive_manual.py\nПередать маршрут среде\nrendering/renderer.py\nПоказать маршрут"];
+error [label="scripts/drive_manual.py\nСообщить причину; повторить выбор"];
+end [label="Маршрут готов", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> found [label=""];
+found -> accept [label="Да"];
+found -> error [label="Нет"];
+error -> n1 [label=""];
+accept -> end [label=""];
+}

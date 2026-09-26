@@ -1,0 +1,31 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="environment/env.py\nПринять и проверить действие"];
+n2 [label="simulation/controls.py\nПреобразовать действие в педали и руление"];
+n3 [label="simulation/simulator.py\nНачать очередной физический шаг"];
+n4 [label="simulation/traffic.py\nОпределить сигналы на интервале шага"];
+n5 [label="simulation/vehicle.py\nРассчитать новое состояние машинки"];
+n6 [label="map/geometry.py\nПо запросу правил вычислить расстояния и пересечения"];
+n7 [label="simulation/rules.py\nОбновить RouteState; зарегистрировать события"];
+n8 [label="environment/termination.py\nПроверить завершение и лимит времени"];
+more [label="Нужен ещё шаг и эпизод активен?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+reward [label="environment/rewards.py\nРассчитать награду по выполненным шагам"];
+obs [label="environment/observations.py\nСформировать новое наблюдение"];
+end [label="environment/env.py\nВернуть observation, reward,\nterminated, truncated, info", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> n7 [label=""];
+n7 -> n8 [label=""];
+n8 -> more [label=""];
+more -> n3 [label="Да"];
+more -> reward [label="Нет"];
+reward -> obs [label=""];
+obs -> end [label=""];
+}

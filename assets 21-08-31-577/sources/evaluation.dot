@@ -1,0 +1,28 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="experiments/evaluate.py\nЗагрузить конфигурацию и проверочные сценарии"];
+n2 [label="agents/dqn.py\nЗагрузить сохранённую модель"];
+n3 [label="environment/env.py\nВыполнить reset() для очередного сценария"];
+n4 [label="agents/network.py\nВычислить Q-оценки"];
+n5 [label="agents/dqn.py\nВыбрать действие с максимальной Q-оценкой"];
+n6 [label="environment/env.py\nВыполнить step(action)"];
+done [label="Эпизод завершён?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+metrics [label="experiments/metrics.py\nСохранить показатели эпизода"];
+more [label="Есть ещё сценарии?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+end [label="experiments/evaluate.py\nСохранить общий отчёт в runs/; закрыть среду", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> done [label=""];
+done -> n4 [label="Нет"];
+done -> metrics [label="Да"];
+metrics -> more [label=""];
+more -> n3 [label="Да"];
+more -> end [label="Нет"];
+}

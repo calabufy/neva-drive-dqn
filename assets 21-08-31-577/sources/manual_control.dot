@@ -1,0 +1,26 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="scripts/drive_manual.py\nПрочитать настройки; создать среду и выбрать маршрут"];
+n2 [label="environment/env.py\nВыполнить reset()"];
+n3 [label="scripts/drive_manual.py\nПолучить команду: действие, пауза, сброс или выход"];
+command [label="Команда?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+step [label="environment/env.py\nВыполнить step(action)\nrendering/renderer.py\nПоказать состояние"];
+done [label="Эпизод завершён?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+wait [label="scripts/drive_manual.py\nПоказать итог; ждать сброса или выхода"];
+exit [label="environment/env.py\nclose(); конец", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> command [label=""];
+command -> step [label="Действие"];
+step -> done [label=""];
+done -> wait [label="Да"];
+done -> n3 [label="Нет"];
+wait -> n3 [label=""];
+command -> n2 [label="Сброс"];
+command -> n3 [label="Пауза"];
+command -> exit [label="Выход"];
+}

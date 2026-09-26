@@ -1,0 +1,39 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\tikzset{
+  process/.style={rectangle,draw,rounded corners,align=center,
+    text width=10cm,minimum height=10mm,font=\small},
+  decision/.style={diamond,draw,aspect=3,align=center,
+    text width=4cm,inner sep=1pt,font=\small},
+  terminal/.style={rectangle,draw,rounded corners=5mm,
+    align=center,text width=7cm,minimum height=8mm,font=\small},
+  flow/.style={-{Stealth},thick}
+}
+\begin{document}
+\begin{tikzpicture}[node distance=6mm and 18mm]
+\node[terminal] (start) {Начало};
+\node[process,below=of start] (n1) {\texttt{tests/test\_routing.py}\\ Проверить map/routing.py на контрольных графах};
+\draw[flow] (start) -- (n1);
+\node[process,below=of n1] (n2) {\texttt{tests/test\_geometry.py}\\ Проверить map/geometry.py: расстояния, коридоры и пересечения};
+\draw[flow] (n1) -- (n2);
+\node[process,below=of n2] (n3) {\texttt{tests/test\_vehicle.py}\\ Проверить simulation/vehicle.py: движение и физические пределы};
+\draw[flow] (n2) -- (n3);
+\node[process,below=of n3] (n4) {\texttt{tests/test\_rules.py}\\ Проверить simulation/rules.py: маршрут, события и отсутствие дубликатов};
+\draw[flow] (n3) -- (n4);
+\node[process,below=of n4] (n5) {\texttt{tests/test\_environment.py}\\ Проверить environment/env.py: reset(), step(), завершение и воспроизводимость};
+\draw[flow] (n4) -- (n5);
+
+\node[decision,below=of n5] (passed) {Все проверки пройдены?};
+\draw[flow] (n5) -- (passed);
+\node[terminal,below=of passed] (ok) {Успешный отчёт тестового запуска};
+\draw[flow] (passed) -- node[right] {Да} (ok);
+\node[terminal,right=of passed] (fail) {Отчёт об ошибках с указанием тестов};
+\draw[flow] (passed) -- node[above] {Нет} (fail);
+
+\end{tikzpicture}
+
+\end{document}

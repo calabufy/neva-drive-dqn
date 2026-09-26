@@ -1,0 +1,40 @@
+\documentclass[tikz,border=10pt]{standalone}
+\usepackage{fontspec}
+\setmainfont{DejaVu Serif}
+\setsansfont{DejaVu Sans}
+\setmonofont{DejaVu Sans Mono}
+\usetikzlibrary{arrows.meta,positioning,shapes.geometric}
+\tikzset{
+  process/.style={rectangle,draw,rounded corners,align=center,
+    text width=10cm,minimum height=10mm,font=\small},
+  decision/.style={diamond,draw,aspect=3,align=center,
+    text width=4cm,inner sep=1pt,font=\small},
+  terminal/.style={rectangle,draw,rounded corners=5mm,
+    align=center,text width=7cm,minimum height=8mm,font=\small},
+  flow/.style={-{Stealth},thick}
+}
+\begin{document}
+\begin{tikzpicture}[node distance=6mm and 18mm]
+\node[terminal] (start) {Начало};
+\node[process,below=of start] (n1) {\texttt{scripts/drive\_manual.py}\\ Получить клики А и Б};
+\draw[flow] (start) -- (n1);
+\node[process,below=of n1] (n2) {\texttt{rendering/camera.py}\\ Перевести координаты кликов в метры};
+\draw[flow] (n1) -- (n2);
+\node[process,below=of n2] (n3) {\texttt{map/geometry.py}\\ Найти подходящие дорожные участки};
+\draw[flow] (n2) -- (n3);
+\node[process,below=of n3] (n4) {\texttt{map/routing.py}\\ Найти разрешённый путь в дорожной сети};
+\draw[flow] (n3) -- (n4);
+
+\node[decision,below=of n4] (found) {Путь найден?};
+\draw[flow] (n4) -- (found);
+\node[process,below=of found] (accept) {\texttt{scripts/drive\_manual.py}\\ Передать маршрут среде\\ \texttt{rendering/renderer.py}\\ Показать маршрут};
+\draw[flow] (found) -- node[right] {Да} (accept);
+\node[process,right=of found] (error) {\texttt{scripts/drive\_manual.py}\\ Сообщить причину; повторить выбор};
+\draw[flow] (found) -- node[above] {Нет} (error);
+\draw[flow] (error.north) |- (n1.east);
+\node[terminal,below=of accept] (end) {Маршрут готов};
+\draw[flow] (accept) -- (end);
+
+\end{tikzpicture}
+
+\end{document}

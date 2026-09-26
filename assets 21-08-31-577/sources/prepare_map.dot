@@ -1,0 +1,22 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="scripts/prepare_map.py\nПрочитать configs/map.yaml; вызвать preprocessing"];
+n2 [label="map/preprocessing.py\nОрганизовать обработку данных"];
+n3 [label="map/osm_loader.py\nПрочитать data/export.json; проверить ссылки"];
+n4 [label="map/projection.py\nПеревести координаты в локальные метры"];
+n5 [label="map/road_network.py\nОтобрать дороги; построить направленные участки и\nограничения"];
+n6 [label="map/geometry.py\nПодготовить коридоры ± 2.0 м и пространственный\nиндекс"];
+n7 [label="map/preprocessing.py\nПрименить data/overrides/traffic.yaml; проверить и\nсохранить в data/processed/"];
+end [label="Готово", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> n7 [label=""];
+n7 -> end [label=""];
+}

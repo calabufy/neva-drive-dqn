@@ -1,0 +1,26 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="experiments/evaluate.py\nЗагрузить модель; создать среду с визуализацией"];
+n2 [label="environment/env.py\nВыполнить reset()"];
+n3 [label="experiments/evaluate.py\nОбработать паузу, сброс, выход и скорость показа"];
+n4 [label="agents/dqn.py\nЕсли эпизод активен и нет паузы: выбрать действие"];
+n5 [label="environment/env.py\nЕсли выбрано действие: выполнить step(action)"];
+n6 [label="rendering/camera.py\nОбновить положение камеры"];
+n7 [label="rendering/renderer.py\nПоказать состояние и диагностику"];
+command [label="Продолжение?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+end [label="environment/env.py\nclose(); конец", fillcolor="#DBEAFE"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> n5 [label=""];
+n5 -> n6 [label=""];
+n6 -> n7 [label=""];
+n7 -> command [label=""];
+command -> n3 [label="Показ / пауза"];
+command -> n2 [label="Сброс"];
+command -> end [label="Выход"];
+}

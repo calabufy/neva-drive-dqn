@@ -1,0 +1,21 @@
+digraph G {
+graph [rankdir=TB, bgcolor="white", pad="0.3", nodesep="0.45", ranksep="0.45", splines=polyline];
+node [fontname="Arial", fontsize=13, shape=box, style="rounded,filled", fillcolor="#F1F5F9", color="#475569", margin="0.18,0.12"];
+edge [fontname="Arial", fontsize=12, color="#475569", arrowsize=0.7];
+start [label="Начало", fillcolor="#DBEAFE"];
+n1 [label="scripts/view_map.py\nЗагрузить подготовленную карту"];
+n2 [label="rendering/camera.py\nЗадать масштаб и видимую область"];
+n3 [label="rendering/renderer.py\nНарисовать карту и дорожные объекты"];
+n4 [label="scripts/view_map.py\nПолучить события мыши и клавиатуры"];
+quit [label="Закрыть окно?", shape="diamond", style="filled", fillcolor="#FEF3C7"];
+end [label="Освободить ресурсы; конец", fillcolor="#DBEAFE"];
+update [label="rendering/camera.py\nОбновить камеру; преобразовать клик\nmap/geometry.py\nНайти выбранный объект"];
+start -> n1 [label=""];
+n1 -> n2 [label=""];
+n2 -> n3 [label=""];
+n3 -> n4 [label=""];
+n4 -> quit [label=""];
+quit -> end [label="Да"];
+quit -> update [label="Нет"];
+update -> n3 [label=""];
+}
