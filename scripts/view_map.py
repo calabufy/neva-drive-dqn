@@ -6,7 +6,10 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import cv2
+import numpy as np
 from dataclasses import dataclass
+from functools import lru_cache
 from pathlib import Path
 from typing import Any
 
@@ -19,10 +22,21 @@ WINDOW_SIZE = (1280, 800)
 BACKGROUND = (21, 25, 31)
 BUILDING = (102, 112, 122)
 BUILDING_OUTLINE = (148, 158, 169)
+BUILDING_BOUNDARY = (20, 75, 230)
 START = (62, 196, 121)
 GOAL = (229, 83, 80)
 HOVER = (255, 208, 74)
 TEXT = (235, 239, 244)
+
+# Калибровка map.png относительно локальных координат MapData.
+# Она получена сопоставлением контуров зданий с их растровым отображением.
+# Полная матрица local UTM -> пиксели исходного PNG, включая поворот.
+# Привязка относится к data/map.png и текущему началу UTM в MapData.
+MAP_IMAGE_AFFINE = np.array([
+    [0.7106805682182311, -0.028956596180796622, -69.08141938596964],
+    [-0.029012513160705564, -0.7118778586387634, 1615.6931612491608],
+    [0.0, 0.0, 1.0],
+])
 
 
 @dataclass
@@ -30,6 +44,11 @@ class Camera:
     center_x_m: float
     center_y_m: float
     zoom_px_per_m: float
+
+    def matrix(self, size):
+        z = self.zoom_px_per_m
+        return np.array([[z, 0, size[0]/2-z*self.center_x_m],
+                         [0, -z, size[1]/2+z*self.center_y_m], [0, 0, 1]])
 
     def world_to_screen(self, point: tuple[float, float], size: tuple[int, int]) -> tuple[int, int]:
         return (
@@ -66,6 +85,48 @@ def parse_args() -> argparse.Namespace:
     return parser.parse_args()
 
 
+class RasterCamera(Camera):
+    """Общая камера в ориентации PNG; клики возвращаются в локальные метры."""
+
+    def matrix(self, size):
+        return self._matrix(size, self.center_x_m, self.center_y_m, self.zoom_px_per_m)
+
+    @staticmethod
+    @lru_cache(maxsize=16)
+    def _matrix(size, center_x, center_y, zoom):
+        center = MAP_IMAGE_AFFINE @ [center_x, center_y, 1]
+        scale = zoom / 0.711
+        viewport = np.array([[scale, 0, size[0]/2 - scale*center[0]],
+                             [0, scale, size[1]/2 - scale*center[1]], [0, 0, 1]])
+        return viewport @ MAP_IMAGE_AFFINE
+
+    def world_to_screen(self, point, size):
+        p = self.matrix(size) @ [*point, 1]
+        return round(p[0]), round(p[1])
+
+    def screen_to_world(self, point, size):
+        p = np.linalg.inv(self.matrix(size)) @ [*point, 1]
+        return float(p[0]), float(p[1])
+
+    def zoom_at(self, screen_point, factor, size):
+        before = self.screen_to_world(screen_point, size)
+        self.zoom_px_per_m = min(20., max(.05, self.zoom_px_per_m * factor))
+        after = self.screen_to_world(screen_point, size)
+        self.center_x_m += before[0] - after[0]
+        self.center_y_m += before[1] - after[1]
+
+    def pan(self, delta_px):
+        delta = np.linalg.solve(self.matrix((0, 0))[:2, :2], delta_px)
+        self.center_x_m -= delta[0]
+        self.center_y_m -= delta[1]
+
+    def image_rect(self, pygame, image_size, window_size):
+        transform = self.matrix(window_size) @ np.linalg.inv(MAP_IMAGE_AFFINE)
+        a = transform @ [0, 0, 1]
+        b = transform @ [*image_size, 1]
+        return pygame.Rect(round(a[0]), round(a[1]), round(b[0])-round(a[0]), round(b[1])-round(a[1]))
+
+
 def load_map_data(path: Path) -> dict[str, Any]:
     with path.open(encoding="utf-8") as file:
         payload = json.load(file)
@@ -75,7 +136,8 @@ def load_map_data(path: Path) -> dict[str, Any]:
 
 
 def building_bounds(buildings: list[dict[str, Any]]) -> tuple[float, float, float, float]:
-    points = [point for building in buildings for point in building["polygon"]]
+    points = [point for building in buildings
+              for ring in building.get('outers', [building['polygon']]) for point in ring]
     if not points:
         raise ValueError("В MapData нет контуров зданий для отображения")
     min_x, max_x = min(point[0] for point in points), max(point[0] for point in points)
@@ -88,6 +150,14 @@ def fit_camera(buildings: list[dict[str, Any]], size: tuple[int, int]) -> Camera
     width_m, height_m = max(max_x - min_x, 1.0), max(max_y - min_y, 1.0)
     zoom = min((size[0] - 80) / width_m, (size[1] - 120) / height_m)
     return Camera((min_x + max_x) / 2, (min_y + max_y) / 2, zoom)
+
+
+def map_image_bounds(image_size: tuple[int, int]) -> tuple[float, float, float, float]:
+    """Восстанавливает границы PNG в локальных метрах, не меняя само изображение."""
+    w, h = image_size
+    corners = np.array([[0, 0, 1], [w, 0, 1], [w, h, 1], [0, h, 1]])
+    world = corners @ np.linalg.inv(MAP_IMAGE_AFFINE).T
+    return (*world[:, :2].min(axis=0), *world[:, :2].max(axis=0))
 
 
 def point_in_polygon(point: tuple[float, float], polygon: list[list[float]]) -> bool:
@@ -106,7 +176,33 @@ def point_in_polygon(point: tuple[float, float], polygon: list[list[float]]) -> 
 
 def building_at(point: tuple[float, float], buildings: list[dict[str, Any]]) -> dict[str, Any] | None:
     """Возвращает здание под курсором или точкой клика."""
-    return next((building for building in buildings if point_in_polygon(point, building["polygon"])), None)
+    return next((b for b in buildings
+                 if bounds_contain(building_geometry(b)[1], point)
+                 if any(point_in_polygon(point, p) for p in b.get('outers', [b['polygon']]))
+                 and not any(point_in_polygon(point, p) for p in b.get('holes', []))), None)
+
+
+def building_geometry(building):
+    """Массивы и bounding box вычисляются один раз при первом обращении."""
+    if '_geometry' not in building:
+        rings = [np.asarray(r, dtype=np.float64) for r in
+                 building.get('outers', [building['polygon']]) + building.get('holes', [])]
+        points = np.concatenate(rings)
+        lo, hi = points.min(axis=0), points.max(axis=0)
+        building['_geometry'] = rings, (lo[0], lo[1], hi[0], hi[1])
+    return building['_geometry']
+
+
+def bounds_contain(bounds, point):
+    return bounds[0] <= point[0] <= bounds[2] and bounds[1] <= point[1] <= bounds[3]
+
+
+def visible_bounds(camera, surface):
+    rect = surface.get_clip()
+    corners = np.array([[rect.left, rect.top, 1], [rect.right, rect.top, 1],
+                        [rect.right, rect.bottom, 1], [rect.left, rect.bottom, 1]])
+    world = corners @ np.linalg.inv(camera.matrix(surface.get_size())).T
+    return (*world[:, :2].min(axis=0), *world[:, :2].max(axis=0))
 
 
 def save_selection(
@@ -149,9 +245,30 @@ def draw_building_outline(
 ) -> None:
     if building is None:
         return
-    polygon = [camera.world_to_screen(tuple(point), surface.get_size()) for point in building["polygon"]]
-    if len(polygon) >= 3:
-        pygame.draw.lines(surface, color, True, polygon, width)
+    matrix = camera.matrix(surface.get_size())
+    for ring in building_geometry(building)[0]:
+        polygon = np.rint(ring @ matrix[:2, :2].T + matrix[:2, 2]).astype(np.int32)
+        if len(polygon) >= 3:
+            pygame.draw.lines(surface, color, True, polygon, width)
+
+
+def draw_building_boundaries(
+    pygame: Any, surface: Any, camera: Camera, buildings: list[dict[str, Any]]
+) -> None:
+    """Рисует все контуры зданий поверх raster-подложки."""
+    key = (id(buildings), surface.get_size(), tuple(surface.get_clip()),
+           camera.center_x_m, camera.center_y_m, camera.zoom_px_per_m)
+    if getattr(camera, '_contour_key', None) != key:
+        layer = pygame.Surface(surface.get_size(), pygame.SRCALPHA)
+        layer.set_clip(surface.get_clip())
+        x0, y0, x1, y1 = visible_bounds(camera, surface)
+        for building in buildings:
+            _, (bx0, by0, bx1, by1) = building_geometry(building)
+            if bx1 < x0 or by1 < y0 or bx0 > x1 or by0 > y1:
+                continue
+            draw_building_outline(pygame, layer, camera, building, BUILDING_BOUNDARY, 1)
+        camera._contour_key, camera._contour_layer = key, layer
+    surface.blit(camera._contour_layer, (0, 0))
 
 
 def draw_map_image(
@@ -160,19 +277,34 @@ def draw_map_image(
     image: Any,
     camera: Camera,
     bounds: tuple[float, float, float, float],
-    cached_size: tuple[int, int] | None,
+    cached_size: tuple | None,
     cached_image: Any | None,
-) -> tuple[tuple[int, int], Any]:
-    """Рисует геопривязанную подложку; масштабируется только при изменении zoom."""
-    min_x, min_y, max_x, max_y = bounds
-    top_left = camera.world_to_screen((min_x, max_y), surface.get_size())
-    bottom_right = camera.world_to_screen((max_x, min_y), surface.get_size())
-    size = (max(1, bottom_right[0] - top_left[0]), max(1, bottom_right[1] - top_left[1]))
-    if cached_image is None or cached_size != size:
-        cached_image = pygame.transform.smoothscale(image, size)
-        cached_size = size
-    surface.blit(cached_image, top_left)
-    return cached_size, cached_image
+) -> tuple[tuple, Any]:
+    """Преобразует только PNG в систему камеры; геометрия OSM неизменна.
+
+    Рендер ограничен размером окна даже при сильном приближении.
+    """
+    width, height = surface.get_size()
+    z = camera.zoom_px_per_m
+    key = (width, height, camera.center_x_m, camera.center_y_m, z)
+    if cached_image is None or cached_size != key:
+        world_to_screen = np.array([
+            [z, 0, width / 2 - z * camera.center_x_m],
+            [0, -z, height / 2 + z * camera.center_y_m],
+            [0, 0, 1],
+        ])
+        if isinstance(camera, RasterCamera):
+            world_to_screen = camera.matrix(surface.get_size())
+        transform = world_to_screen @ np.linalg.inv(MAP_IMAGE_AFFINE)
+        if getattr(camera, '_source_image', None) is not image:
+            camera._source_image = image
+            camera._source_pixels = np.ascontiguousarray(pygame.surfarray.array3d(image).transpose(1, 0, 2))
+        pixels = camera._source_pixels
+        frame = cv2.warpAffine(pixels, transform[:2], (width, height),
+                               flags=cv2.INTER_LINEAR, borderValue=BACKGROUND)
+        cached_image = pygame.surfarray.make_surface(frame.transpose(1, 0, 2))
+    surface.blit(cached_image, (0, 0))
+    return key, cached_image
 
 
 def main() -> None:
@@ -190,9 +322,14 @@ def main() -> None:
     pygame.display.set_caption("Neva Drive - выбор пункта А и Б")
     clock = pygame.time.Clock()
     camera = fit_camera(buildings, window.get_size())
-    map_bounds = building_bounds(buildings)
     map_image = pygame.image.load(args.map_image).convert() if args.map_image.exists() else None
-    scaled_image_size: tuple[int, int] | None = None
+    if map_image is not None:
+        iw, ih = map_image.get_size()
+        center = np.linalg.inv(MAP_IMAGE_AFFINE) @ [iw/2, ih/2, 1]
+        camera = RasterCamera(center[0], center[1],
+                              .711 * min((window.get_width()-80)/iw, (window.get_height()-160)/ih))
+    map_bounds = map_image_bounds(map_image.get_size()) if map_image is not None else building_bounds(buildings)
+    scaled_image_size: tuple | None = None
     scaled_image: Any | None = None
     start: tuple[float, float] | None = None
     goal: tuple[float, float] | None = None
@@ -210,6 +347,8 @@ def main() -> None:
                 running = False
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
+                    if map_image is not None and not camera.image_rect(pygame, map_image.get_size(), window.get_size()).collidepoint(event.pos):
+                        continue
                     point = camera.screen_to_world(event.pos, window.get_size())
                     if start is None or goal is not None:
                         start, start_building = point, building_at(point, buildings)
@@ -258,6 +397,10 @@ def main() -> None:
                     pygame.draw.polygon(window, BUILDING, polygon)
                     pygame.draw.lines(window, BUILDING_OUTLINE, True, polygon, 1)
 
+        if map_image is not None:
+            window.set_clip(camera.image_rect(pygame, map_image.get_size(), window.get_size()))
+            draw_building_boundaries(pygame, window, camera, buildings)
+
         hovered_building = building_at(camera.screen_to_world(pygame.mouse.get_pos(), window.get_size()), buildings)
         draw_building_outline(pygame, window, camera, hovered_building, HOVER, 2)
         draw_building_outline(pygame, window, camera, start_building, START, 4)
@@ -267,6 +410,8 @@ def main() -> None:
             draw_marker(pygame, window, camera, start, START, "A")
         if goal is not None:
             draw_marker(pygame, window, camera, goal, GOAL, "Б")
+
+        window.set_clip(None)
 
         font = pygame.font.Font(None, 25)
         if start is None:

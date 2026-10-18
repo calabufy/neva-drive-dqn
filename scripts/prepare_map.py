@@ -50,6 +50,38 @@ def prepare_buildings(elements: list[dict[str, Any]], projection: Any) -> list[d
             "name": element.get("tags", {}).get("name"),
             "polygon": polygon,
         })
+    for element in elements:
+        if element.get('type') != 'relation' or 'building' not in element.get('tags', {}):
+            continue
+        rings = {}
+        for role in ('outer', 'inner'):
+            pieces = [[(p['lat'], p['lon']) for p in m['geometry']]
+                      for m in element.get('members', [])
+                      if m.get('role') == role and m.get('geometry')]
+            closed = []
+            while pieces:
+                ring = pieces.pop()
+                while ring[0] != ring[-1]:
+                    for i, piece in enumerate(pieces):
+                        if piece[0] == ring[-1] or piece[-1] == ring[-1]:
+                            if piece[-1] == ring[-1]:
+                                piece = piece[::-1]
+                            ring.extend(piece[1:])
+                            pieces.pop(i)
+                            break
+                    else:
+                        raise ValueError(f"Незамкнутый контур relation {element['id']}")
+                closed.append([list(projection.project(*p)) for p in ring])
+            rings[role] = closed
+        if not rings['outer']:
+            continue
+        buildings.append({
+            'osm_id': element['id'], 'osm_type': 'relation',
+            'building_type': element['tags']['building'],
+            'name': element['tags'].get('name'),
+            'polygon': rings['outer'][0],
+            'outers': rings['outer'], 'holes': rings['inner'],
+        })
     return buildings
 
 
@@ -78,7 +110,15 @@ def main() -> None:
     road_nodes = index_nodes(road_elements)
     projection = projection_from_nodes(road_nodes)
     nodes, edges, restrictions = build_road_network(road_elements, road_nodes, projection)
-    buildings = prepare_buildings(load_osm(args.buildings), projection)
+    building_elements = load_osm(args.buildings)
+    relations_path = args.buildings.with_name('building_relations.json')
+    if relations_path.exists():
+        # Заменяем неполные relations из старой выгрузки версиями с geometry.
+        relations = load_osm(relations_path)
+        ids = {e['id'] for e in relations}
+        building_elements = [e for e in building_elements
+                             if not (e['type'] == 'relation' and e['id'] in ids)] + relations
+    buildings = prepare_buildings(building_elements, projection)
     signals = prepare_signals(road_nodes, projection, load_trafficlights(args.trafficlights))
 
     payload = {
@@ -108,6 +148,9 @@ def main() -> None:
         },
     }
     args.output.parent.mkdir(parents=True, exist_ok=True)
+    if relations_path.exists():
+        payload['sources']['building_relations'] = str(relations_path)
+        payload['sources']['building_relations_sha256'] = file_sha256(relations_path)
     args.output.write_text(json.dumps(payload, ensure_ascii=False, indent=2), encoding="utf-8")
     print(
         f"MapData создан: {args.output}\n"
