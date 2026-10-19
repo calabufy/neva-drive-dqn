@@ -15,7 +15,7 @@
     "buildings": "/Users/admin/ITMO/1/MLCourseWork/neva-drive-dqn/data/buildings.json",
     "buildings_sha256": "ea4e32a22a560f2a23051116c0a89928edadd566eba1c9a97af1ead5269f242a",
     "trafficlights": "/Users/admin/ITMO/1/MLCourseWork/neva-drive-dqn/data/trafficlights.yaml",
-    "trafficlights_sha256": "8df31e828044074aa9cdbd60cfa38f3162d708bfc8b82585f841fd2c742b3c2e",
+    "trafficlights_sha256": "24852737e32a73357bbad57ea5237ec22dda2e7ed061443f376d397c97eb2893",
     "building_relations": "/Users/admin/ITMO/1/MLCourseWork/neva-drive-dqn/data/building_relations.json",
     "building_relations_sha256": "0911a79a950a43b323ada5227b71fa33da3d62bf08ef990054ba8e28ae9f926f"
   },
@@ -270952,22 +270952,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1659158539,
-      "x_m": 1464.3704070865642,
-      "y_m": 2041.3577993707731,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 10
-        },
-        {
-          "state": "green",
-          "duration_s": 19
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1686646355,
       "x_m": 2198.816774757288,
       "y_m": 359.4081069454551,
@@ -270979,54 +270963,6 @@
         {
           "state": "green",
           "duration_s": 25
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646357,
-      "x_m": 2210.904988242197,
-      "y_m": 369.05331159662455,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 12
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646358,
-      "x_m": 2191.3986781445565,
-      "y_m": 377.7025325233117,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 15
-        },
-        {
-          "state": "green",
-          "duration_s": 29
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646360,
-      "x_m": 2203.1039948181133,
-      "y_m": 387.0064405221492,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 6
-        },
-        {
-          "state": "green",
-          "duration_s": 12
         }
       ],
       "is_programmed": true
@@ -271080,22 +271016,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1686646399,
-      "x_m": 1884.7993330628378,
-      "y_m": 1113.1738290581852,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 11
-        },
-        {
-          "state": "green",
-          "duration_s": 25
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1686646400,
       "x_m": 1864.919446174521,
       "y_m": 1139.511239912361,
@@ -271107,54 +271027,6 @@
         {
           "state": "green",
           "duration_s": 25
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646401,
-      "x_m": 1872.1614753673784,
-      "y_m": 1142.1830903999507,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 9
-        },
-        {
-          "state": "green",
-          "duration_s": 13
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646403,
-      "x_m": 1855.5649635754526,
-      "y_m": 1161.2520669838414,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 12
-        },
-        {
-          "state": "green",
-          "duration_s": 28
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646404,
-      "x_m": 1862.3605715490412,
-      "y_m": 1164.2207300541922,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 13
         }
       ],
       "is_programmed": true
@@ -271192,70 +271064,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1686646423,
-      "x_m": 1648.3101419326267,
-      "y_m": 1659.7856427431107,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 9
-        },
-        {
-          "state": "green",
-          "duration_s": 21
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646467,
-      "x_m": 1490.5480811909074,
-      "y_m": 2023.2905741166323,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 7
-        },
-        {
-          "state": "green",
-          "duration_s": 29
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686646474,
-      "x_m": 1469.449043053377,
-      "y_m": 2053.2589999092743,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 8
-        },
-        {
-          "state": "green",
-          "duration_s": 9
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686652003,
-      "x_m": 1950.9467300323304,
-      "y_m": 937.9955648621544,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 10
-        },
-        {
-          "state": "green",
-          "duration_s": 30
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1686652009,
       "x_m": 1797.1507819751278,
       "y_m": 1296.160885524936,
@@ -271267,22 +271075,6 @@
         {
           "state": "green",
           "duration_s": 24
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1686652010,
-      "x_m": 1804.5250051957555,
-      "y_m": 1298.9275659490377,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 17
-        },
-        {
-          "state": "green",
-          "duration_s": 17
         }
       ],
       "is_programmed": true
@@ -271304,22 +271096,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1686652020,
-      "x_m": 1595.1204361530836,
-      "y_m": 1782.545765821822,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 5
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1687392701,
       "x_m": 1395.7549865330802,
       "y_m": 2220.661565735005,
@@ -271331,22 +271107,6 @@
         {
           "state": "green",
           "duration_s": 8
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1687392702,
-      "x_m": 1403.9983254022081,
-      "y_m": 2222.4331737738103,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 29
         }
       ],
       "is_programmed": true
@@ -271368,22 +271128,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1695842297,
-      "x_m": 1723.573086769844,
-      "y_m": 2016.8177570411935,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 8
-        },
-        {
-          "state": "green",
-          "duration_s": 14
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1695842302,
       "x_m": 1740.7242328691646,
       "y_m": 2054.7412165887654,
@@ -271400,22 +271144,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1695842327,
-      "x_m": 1733.3841232125415,
-      "y_m": 2056.633622292429,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 28
-        },
-        {
-          "state": "green",
-          "duration_s": 28
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 1747815092,
       "x_m": 1631.417762588244,
       "y_m": 1812.4772385060787,
@@ -271427,22 +271155,6 @@
         {
           "state": "green",
           "duration_s": 29
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 1747815094,
-      "x_m": 1627.222733353381,
-      "y_m": 1816.6725009502843,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 21
-        },
-        {
-          "state": "green",
-          "duration_s": 8
         }
       ],
       "is_programmed": true
@@ -271480,38 +271192,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 1904982520,
-      "x_m": 2143.0243160090176,
-      "y_m": 337.7740383222699,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 16
-        },
-        {
-          "state": "green",
-          "duration_s": 29
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 2061171475,
-      "x_m": 667.1218585405732,
-      "y_m": 1099.6698996331543,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 29
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 2226182056,
       "x_m": 1068.7776183438255,
       "y_m": 2073.4175049336627,
@@ -271523,22 +271203,6 @@
         {
           "state": "green",
           "duration_s": 24
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 3251534555,
-      "x_m": 1726.7498614854412,
-      "y_m": 1458.1813247958198,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 20
-        },
-        {
-          "state": "green",
-          "duration_s": 5
         }
       ],
       "is_programmed": true
@@ -271571,22 +271235,6 @@
         {
           "state": "green",
           "duration_s": 6
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 4061479221,
-      "x_m": 212.81084484548774,
-      "y_m": 1047.320480344817,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 23
-        },
-        {
-          "state": "green",
-          "duration_s": 7
         }
       ],
       "is_programmed": true
@@ -271656,70 +271304,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 8295101711,
-      "x_m": 949.1188984331675,
-      "y_m": 843.8963242759928,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 13
-        },
-        {
-          "state": "green",
-          "duration_s": 21
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295141417,
-      "x_m": 942.151538996899,
-      "y_m": 839.6318354113027,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 18
-        },
-        {
-          "state": "green",
-          "duration_s": 11
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295141418,
-      "x_m": 935.37113807071,
-      "y_m": 846.7986791469157,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 29
-        },
-        {
-          "state": "green",
-          "duration_s": 28
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295141420,
-      "x_m": 844.0024463944137,
-      "y_m": 934.3587741423398,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 11
-        },
-        {
-          "state": "green",
-          "duration_s": 27
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 8295160028,
       "x_m": 437.1654689349816,
       "y_m": 679.8482296476141,
@@ -271731,102 +271315,6 @@
         {
           "state": "green",
           "duration_s": 26
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295160029,
-      "x_m": 442.20388568530325,
-      "y_m": 675.7620328254998,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 16
-        },
-        {
-          "state": "green",
-          "duration_s": 19
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295160045,
-      "x_m": 246.05704912065994,
-      "y_m": 447.134431774728,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 19
-        },
-        {
-          "state": "green",
-          "duration_s": 8
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 8295160048,
-      "x_m": 251.7530362822581,
-      "y_m": 441.7611708510667,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 12
-        },
-        {
-          "state": "green",
-          "duration_s": 7
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 9937657761,
-      "x_m": 324.62245448841713,
-      "y_m": 356.3491134522483,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 5
-        },
-        {
-          "state": "green",
-          "duration_s": 23
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 9937657777,
-      "x_m": 643.8376564944629,
-      "y_m": 148.7215259745717,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 12
-        },
-        {
-          "state": "green",
-          "duration_s": 23
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 9975895053,
-      "x_m": 332.86524864751846,
-      "y_m": 348.1624035714194,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 5
-        },
-        {
-          "state": "green",
-          "duration_s": 7
         }
       ],
       "is_programmed": true
@@ -271864,22 +271352,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 12230226899,
-      "x_m": 268.74983270285884,
-      "y_m": 1600.680359615013,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 7
-        },
-        {
-          "state": "green",
-          "duration_s": 21
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 12582188080,
       "x_m": 926.574778539536,
       "y_m": 1915.2068549385294,
@@ -271891,70 +271363,6 @@
         {
           "state": "green",
           "duration_s": 26
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12582188084,
-      "x_m": 1239.6187373438734,
-      "y_m": 1970.0686136344448,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 11
-        },
-        {
-          "state": "green",
-          "duration_s": 22
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12582188091,
-      "x_m": 944.2815658587497,
-      "y_m": 1894.9172603795305,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 28
-        },
-        {
-          "state": "green",
-          "duration_s": 23
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12582188098,
-      "x_m": 942.9847769981716,
-      "y_m": 1901.626212853007,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 20
-        },
-        {
-          "state": "green",
-          "duration_s": 12
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12582195237,
-      "x_m": 779.6634788303636,
-      "y_m": 1734.9509840151295,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 20
-        },
-        {
-          "state": "green",
-          "duration_s": 30
         }
       ],
       "is_programmed": true
@@ -272008,22 +271416,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 12582195251,
-      "x_m": 307.4321110426099,
-      "y_m": 1917.5266784857959,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 28
-        },
-        {
-          "state": "green",
-          "duration_s": 6
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 12587149972,
       "x_m": 882.0199749572203,
       "y_m": 1855.2602604012936,
@@ -272035,38 +271427,6 @@
         {
           "state": "green",
           "duration_s": 25
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12587164119,
-      "x_m": 625.3544410414179,
-      "y_m": 1855.472276499495,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 6
-        },
-        {
-          "state": "green",
-          "duration_s": 17
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12587164120,
-      "x_m": 628.6429801335325,
-      "y_m": 1911.8081736499444,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 15
-        },
-        {
-          "state": "green",
-          "duration_s": 30
         }
       ],
       "is_programmed": true
@@ -272088,22 +271448,6 @@
       "is_programmed": true
     },
     {
-      "osm_id": 12600220135,
-      "x_m": 1322.575060402567,
-      "y_m": 1281.6707761362195,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 22
-        },
-        {
-          "state": "green",
-          "duration_s": 19
-        }
-      ],
-      "is_programmed": true
-    },
-    {
       "osm_id": 12753588320,
       "x_m": 1428.7047386451159,
       "y_m": 150.11031699366868,
@@ -272115,22 +271459,6 @@
         {
           "state": "green",
           "duration_s": 10
-        }
-      ],
-      "is_programmed": true
-    },
-    {
-      "osm_id": 12753588323,
-      "x_m": 1423.2323874623398,
-      "y_m": 154.15697264578193,
-      "phases": [
-        {
-          "state": "red",
-          "duration_s": 19
-        },
-        {
-          "state": "green",
-          "duration_s": 12
         }
       ],
       "is_programmed": true
@@ -272152,6 +271480,1265 @@
       "is_programmed": true
     }
   ],
+  "signs": [
+    {
+      "osm_id": 252128407,
+      "type": "give_way",
+      "x_m": 948.2351738401921,
+      "y_m": 1922.6174463629723,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "170115606:2:forward"
+      ]
+    },
+    {
+      "osm_id": 1913136296,
+      "type": "give_way",
+      "x_m": 288.86394876625855,
+      "y_m": 334.03314031101763,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "180858362:6:forward"
+      ]
+    },
+    {
+      "osm_id": 1997115961,
+      "type": "give_way",
+      "x_m": 2206.2738531292416,
+      "y_m": 319.2715138802305,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "116401740:1:forward"
+      ]
+    },
+    {
+      "osm_id": 2145016840,
+      "type": "give_way",
+      "x_m": 996.7309312404832,
+      "y_m": 899.8842052984983,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "5152373:0:forward"
+      ]
+    },
+    {
+      "osm_id": 2194728591,
+      "type": "stop",
+      "x_m": 698.1079188002041,
+      "y_m": 428.1965086236596,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "631661918:2:backward"
+      ]
+    },
+    {
+      "osm_id": 2516430362,
+      "type": "stop",
+      "x_m": 1529.5279794506496,
+      "y_m": 2179.9540905756876,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "114668818:2:forward"
+      ]
+    },
+    {
+      "osm_id": 3252018215,
+      "type": "stop",
+      "x_m": 662.4088075108011,
+      "y_m": 434.33833619207144,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31375818:10:forward"
+      ]
+    },
+    {
+      "osm_id": 3903959278,
+      "type": "stop",
+      "x_m": 1354.3648554129759,
+      "y_m": 668.2402915675193,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "342907708:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4047904213,
+      "type": "give_way",
+      "x_m": 1565.3238782588742,
+      "y_m": 1190.7313273185864,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "402383120:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4578221234,
+      "type": "give_way",
+      "x_m": 1569.4525739336968,
+      "y_m": 1144.585125762038,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "127413267:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4578221242,
+      "type": "give_way",
+      "x_m": 1516.6164267492713,
+      "y_m": 1292.561785403639,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "23069123:6:forward"
+      ]
+    },
+    {
+      "osm_id": 4578221269,
+      "type": "give_way",
+      "x_m": 1717.6504429111374,
+      "y_m": 2151.9943499397486,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "172747175:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4605429981,
+      "type": "give_way",
+      "x_m": 1961.0111032584682,
+      "y_m": 2080.864938314073,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "263705081:5:forward"
+      ]
+    },
+    {
+      "osm_id": 4617010081,
+      "type": "give_way",
+      "x_m": 1089.6604970343178,
+      "y_m": 999.5685427552089,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "342907690:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4617010084,
+      "type": "give_way",
+      "x_m": 1188.5729692723835,
+      "y_m": 1112.7021884107962,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172948693:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4617010085,
+      "type": "give_way",
+      "x_m": 1188.8213137118146,
+      "y_m": 909.5454685203731,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "31389386:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4617010087,
+      "type": "give_way",
+      "x_m": 1144.9989189860644,
+      "y_m": 907.7747039198875,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "172904349:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4618077009,
+      "type": "give_way",
+      "x_m": 958.6106400160352,
+      "y_m": 1462.5057814661413,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31401023:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077010,
+      "type": "give_way",
+      "x_m": 1470.604555674363,
+      "y_m": 1116.5619087303057,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172744220:3:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077011,
+      "type": "give_way",
+      "x_m": 665.4291916018119,
+      "y_m": 1620.5707244724035,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4618077012,
+      "type": "give_way",
+      "x_m": 1387.296425982262,
+      "y_m": 700.6259693019092,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "31366432:0:backward"
+      ]
+    },
+    {
+      "osm_id": 4618077013,
+      "type": "give_way",
+      "x_m": 1090.6728530185064,
+      "y_m": 1235.0064616147429,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "179164094:9:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077014,
+      "type": "give_way",
+      "x_m": 452.03692659182707,
+      "y_m": 1793.3305565575138,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31375571:10:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077015,
+      "type": "give_way",
+      "x_m": 1054.6512681290624,
+      "y_m": 1153.002413727343,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31399108:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077016,
+      "type": "give_way",
+      "x_m": 851.5945976072107,
+      "y_m": 1327.2438517482951,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "147166294:14:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077018,
+      "type": "give_way",
+      "x_m": 889.0791535563767,
+      "y_m": 1411.8621492236853,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31372284:7:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077020,
+      "type": "give_way",
+      "x_m": 1189.5517268024269,
+      "y_m": 1147.0124968113378,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31374201:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077021,
+      "type": "give_way",
+      "x_m": 734.7176006685477,
+      "y_m": 1653.6490449523553,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "148198556:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077022,
+      "type": "give_way",
+      "x_m": 1598.840652055398,
+      "y_m": 961.2723285425454,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "172948700:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4618077024,
+      "type": "give_way",
+      "x_m": 1509.497846870334,
+      "y_m": 1011.7518178345636,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "231317550:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4618077025,
+      "type": "stop",
+      "x_m": 1517.2831186400726,
+      "y_m": 986.9298188434914,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "253663201:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4618077026,
+      "type": "give_way",
+      "x_m": 1485.9328278978355,
+      "y_m": 1113.3631042568013,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "467153342:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4624013702,
+      "type": "give_way",
+      "x_m": 951.8872350001475,
+      "y_m": 1076.4087923457846,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4624013704,
+      "type": "give_way",
+      "x_m": 553.3013068820001,
+      "y_m": 1460.027984123677,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "164734903:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4624013708,
+      "type": "give_way",
+      "x_m": 913.7187542120228,
+      "y_m": 1032.5899184532464,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "173047440:9:forward"
+      ]
+    },
+    {
+      "osm_id": 4624013709,
+      "type": "give_way",
+      "x_m": 341.5784834600054,
+      "y_m": 1691.9277829593047,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "1338940261:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4624013712,
+      "type": "give_way",
+      "x_m": 982.8107928991085,
+      "y_m": 1108.8951413119212,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "333229200:9:forward"
+      ]
+    },
+    {
+      "osm_id": 4624013714,
+      "type": "give_way",
+      "x_m": 728.8602408912848,
+      "y_m": 1192.236830691807,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "467799175:9:forward"
+      ]
+    },
+    {
+      "osm_id": 4629275470,
+      "type": "give_way",
+      "x_m": 1127.8730112678604,
+      "y_m": 290.52616446465254,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4629275471,
+      "type": "give_way",
+      "x_m": 1202.609480773448,
+      "y_m": 394.56761029269546,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172496816:8:forward"
+      ]
+    },
+    {
+      "osm_id": 4629275474,
+      "type": "give_way",
+      "x_m": 1747.5101478284923,
+      "y_m": 1466.4024734953418,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "157040752:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4629275475,
+      "type": "give_way",
+      "x_m": 540.3230452089338,
+      "y_m": 244.9350128704682,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1361967103:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4629275480,
+      "type": "give_way",
+      "x_m": 1121.127528286539,
+      "y_m": 262.3598813097924,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1392204660:0:forward"
+      ]
+    },
+    {
+      "osm_id": 4629275481,
+      "type": "give_way",
+      "x_m": 1646.6800135275116,
+      "y_m": 824.9503134628758,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "1101498279:0:backward"
+      ]
+    },
+    {
+      "osm_id": 4629275482,
+      "type": "give_way",
+      "x_m": 706.4401988836471,
+      "y_m": 223.77168861683458,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "4457679:15:forward"
+      ]
+    },
+    {
+      "osm_id": 4634806781,
+      "type": "stop",
+      "x_m": 1287.7708245435497,
+      "y_m": 930.522402279079,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172948699:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4634806782,
+      "type": "stop",
+      "x_m": 1282.1483091291739,
+      "y_m": 956.2491530468687,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "172948695:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4641747667,
+      "type": "give_way",
+      "x_m": 1084.0958663548809,
+      "y_m": 1945.1022768951952,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1216036494:0:forward"
+      ]
+    },
+    {
+      "osm_id": 4641747669,
+      "type": "give_way",
+      "x_m": 1018.7936141972896,
+      "y_m": 1931.8232158413157,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1421992488:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4641747671,
+      "type": "give_way",
+      "x_m": 1046.9613055104855,
+      "y_m": 1907.0713233286515,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172897204:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4641747673,
+      "type": "give_way",
+      "x_m": 1021.1333309657639,
+      "y_m": 1998.0648000296205,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4668890289,
+      "type": "give_way",
+      "x_m": 850.8197051633615,
+      "y_m": 724.6336070820689,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "539501294:8:forward"
+      ]
+    },
+    {
+      "osm_id": 4668890290,
+      "type": "give_way",
+      "x_m": 718.0951777041191,
+      "y_m": 624.1836492503062,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31398773:3:forward"
+      ]
+    },
+    {
+      "osm_id": 4669076725,
+      "type": "give_way",
+      "x_m": 626.4734703094,
+      "y_m": 711.4695174209774,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4669076726,
+      "type": "give_way",
+      "x_m": 749.1407899343176,
+      "y_m": 810.4540681680664,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "100498874:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4669076727,
+      "type": "give_way",
+      "x_m": 650.9153293708805,
+      "y_m": 688.8073433423415,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4669154244,
+      "type": "give_way",
+      "x_m": 630.1928645929438,
+      "y_m": 1045.9138191537932,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31367485:8:forward"
+      ]
+    },
+    {
+      "osm_id": 4669154245,
+      "type": "give_way",
+      "x_m": 552.2734651363571,
+      "y_m": 994.0357559947297,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31402122:8:forward"
+      ]
+    },
+    {
+      "osm_id": 4669154246,
+      "type": "give_way",
+      "x_m": 559.3005049336352,
+      "y_m": 960.534944945015,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "4590718:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764256,
+      "type": "give_way",
+      "x_m": 1124.044315970561,
+      "y_m": 1679.842282883823,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "172897206:2:backward"
+      ]
+    },
+    {
+      "osm_id": 4692764265,
+      "type": "give_way",
+      "x_m": 1293.0052758691018,
+      "y_m": 1464.3475160850212,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "60216635:6:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764266,
+      "type": "give_way",
+      "x_m": 871.2661741524935,
+      "y_m": 1824.7607050389051,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4692764276,
+      "type": "give_way",
+      "x_m": 1237.157184610027,
+      "y_m": 1813.0788234323263,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "288821833:0:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764279,
+      "type": "give_way",
+      "x_m": 1066.1323876638198,
+      "y_m": 1584.8614650331438,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31370683:7:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764280,
+      "type": "give_way",
+      "x_m": 1219.2106870207936,
+      "y_m": 1755.7904408946633,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "539904849:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764287,
+      "type": "give_way",
+      "x_m": 836.5720235740882,
+      "y_m": 1779.095213838853,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172897216:8:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764288,
+      "type": "give_way",
+      "x_m": 1138.7456200663,
+      "y_m": 1666.8116896906868,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172897207:13:forward"
+      ]
+    },
+    {
+      "osm_id": 4692764892,
+      "type": "give_way",
+      "x_m": 1087.7968838955276,
+      "y_m": 1639.076572502032,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172897214:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4693438341,
+      "type": "give_way",
+      "x_m": 2150.741403543041,
+      "y_m": 653.8442812301219,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172894693:2:forward"
+      ]
+    },
+    {
+      "osm_id": 4693438342,
+      "type": "give_way",
+      "x_m": 1907.6553157503367,
+      "y_m": 1083.014410435222,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "241114899:12:forward"
+      ]
+    },
+    {
+      "osm_id": 4693438343,
+      "type": "give_way",
+      "x_m": 2256.3336945266346,
+      "y_m": 992.0420331861824,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172445863:5:forward"
+      ]
+    },
+    {
+      "osm_id": 4693438352,
+      "type": "give_way",
+      "x_m": 2113.7824550902005,
+      "y_m": 1380.441854021512,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "241114896:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4722987924,
+      "type": "give_way",
+      "x_m": 277.1688619625056,
+      "y_m": 842.8591360645369,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 4722987928,
+      "type": "give_way",
+      "x_m": 333.6848353240057,
+      "y_m": 847.6115429122001,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "171381379:1:forward"
+      ]
+    },
+    {
+      "osm_id": 4722987937,
+      "type": "give_way",
+      "x_m": 474.204177565407,
+      "y_m": 732.5836338894442,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172613531:4:forward"
+      ]
+    },
+    {
+      "osm_id": 4722987939,
+      "type": "give_way",
+      "x_m": 339.9112212865148,
+      "y_m": 752.711107775569,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "171381378:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4723137503,
+      "type": "give_way",
+      "x_m": 466.5212863314664,
+      "y_m": 870.5232562441379,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "863399369:0:forward"
+      ]
+    },
+    {
+      "osm_id": 4724138550,
+      "type": "give_way",
+      "x_m": 391.71562201110646,
+      "y_m": 1264.2868282170966,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31380010:11:forward"
+      ]
+    },
+    {
+      "osm_id": 4724864260,
+      "type": "give_way",
+      "x_m": 792.722381106345,
+      "y_m": 1269.945301468484,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "479371109:3:forward"
+      ]
+    },
+    {
+      "osm_id": 4724864267,
+      "type": "give_way",
+      "x_m": 784.3608114325325,
+      "y_m": 1223.4718343038112,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "4590722:6:forward"
+      ]
+    },
+    {
+      "osm_id": 4747682016,
+      "type": "stop",
+      "x_m": 1544.2297873778734,
+      "y_m": 2202.2785379653797,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "114668818:1:backward"
+      ]
+    },
+    {
+      "osm_id": 4887165851,
+      "type": "give_way",
+      "x_m": 1708.9403843726031,
+      "y_m": 2075.1637964248657,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "4456109:1:forward"
+      ]
+    },
+    {
+      "osm_id": 5932881196,
+      "type": "give_way",
+      "x_m": 692.3647319221636,
+      "y_m": 324.88950835354626,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "236764587:4:forward"
+      ]
+    },
+    {
+      "osm_id": 5932881200,
+      "type": "give_way",
+      "x_m": 559.3992080286844,
+      "y_m": 347.49588473979384,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "4457242:1:backward"
+      ]
+    },
+    {
+      "osm_id": 5932900405,
+      "type": "give_way",
+      "x_m": 1394.1451027514413,
+      "y_m": 1376.7462399415672,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172897215:4:forward"
+      ]
+    },
+    {
+      "osm_id": 5956962585,
+      "type": "give_way",
+      "x_m": 1447.5637607690296,
+      "y_m": 1430.273135246709,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "22882469:2:forward"
+      ]
+    },
+    {
+      "osm_id": 7136025886,
+      "type": "give_way",
+      "x_m": 446.38130400294904,
+      "y_m": 475.2742427047342,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "31375818:1:backward"
+      ]
+    },
+    {
+      "osm_id": 7156106605,
+      "type": "give_way",
+      "x_m": 982.4134912149748,
+      "y_m": 1963.789521291852,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "244401058:2:backward"
+      ]
+    },
+    {
+      "osm_id": 7280866743,
+      "type": "give_way",
+      "x_m": 1235.5875430387678,
+      "y_m": 1986.9118515979499,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "22417457:2:backward"
+      ]
+    },
+    {
+      "osm_id": 8514862227,
+      "type": "give_way",
+      "x_m": 2039.0326622829307,
+      "y_m": 379.0326007772237,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "514970573:3:forward"
+      ]
+    },
+    {
+      "osm_id": 8515342697,
+      "type": "give_way",
+      "x_m": 2191.8401082222117,
+      "y_m": 353.926450275816,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "28327627:4:forward"
+      ]
+    },
+    {
+      "osm_id": 10121597792,
+      "type": "give_way",
+      "x_m": 1304.0988221156294,
+      "y_m": 612.2222215589136,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "892494281:1:forward"
+      ]
+    },
+    {
+      "osm_id": 10123676481,
+      "type": "give_way",
+      "x_m": 672.19315479137,
+      "y_m": 1126.3430825518444,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1321673560:0:forward"
+      ]
+    },
+    {
+      "osm_id": 10123676482,
+      "type": "give_way",
+      "x_m": 690.8787430552184,
+      "y_m": 1104.3511975817382,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1321673559:4:forward"
+      ]
+    },
+    {
+      "osm_id": 10123676483,
+      "type": "give_way",
+      "x_m": 684.6491635309067,
+      "y_m": 1072.3180267438293,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31374155:2:forward"
+      ]
+    },
+    {
+      "osm_id": 10147918341,
+      "type": "give_way",
+      "x_m": 1384.0371643307153,
+      "y_m": 2218.250991036184,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "30639530:9:forward"
+      ]
+    },
+    {
+      "osm_id": 10147918342,
+      "type": "give_way",
+      "x_m": 1415.158589224564,
+      "y_m": 2224.8776532951742,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "167451412:2:backward"
+      ]
+    },
+    {
+      "osm_id": 10152083364,
+      "type": "give_way",
+      "x_m": 472.10196658363566,
+      "y_m": 1888.8153594434261,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1321671767:5:forward"
+      ]
+    },
+    {
+      "osm_id": 10152083365,
+      "type": "give_way",
+      "x_m": 628.7139088325202,
+      "y_m": 1913.1320205405354,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "1547661707:3:backward"
+      ]
+    },
+    {
+      "osm_id": 10152083366,
+      "type": "give_way",
+      "x_m": 625.2326098653721,
+      "y_m": 1853.8606343297288,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1359326367:0:forward"
+      ]
+    },
+    {
+      "osm_id": 10152083385,
+      "type": "give_way",
+      "x_m": 297.44619837461505,
+      "y_m": 1902.3272102922201,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "496529826:1:forward"
+      ]
+    },
+    {
+      "osm_id": 10152083386,
+      "type": "give_way",
+      "x_m": 308.33624306798447,
+      "y_m": 1930.4449827447534,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "22575332:2:backward"
+      ]
+    },
+    {
+      "osm_id": 10168068579,
+      "type": "give_way",
+      "x_m": 301.75244671304245,
+      "y_m": 399.5080724423751,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31747288:1:forward"
+      ]
+    },
+    {
+      "osm_id": 10181664671,
+      "type": "give_way",
+      "x_m": 1867.7366360865417,
+      "y_m": 1166.098648010753,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172447256:3:forward"
+      ]
+    },
+    {
+      "osm_id": 10181664672,
+      "type": "give_way",
+      "x_m": 1897.3557655867771,
+      "y_m": 1140.325053867884,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172447257:2:forward"
+      ]
+    },
+    {
+      "osm_id": 10184233968,
+      "type": "give_way",
+      "x_m": 1980.3608674801653,
+      "y_m": 925.5874753408134,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "539504674:5:forward"
+      ]
+    },
+    {
+      "osm_id": 10184551515,
+      "type": "give_way",
+      "x_m": 2158.288021901273,
+      "y_m": 1257.8748730234802,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "241114896:2:backward"
+      ]
+    },
+    {
+      "osm_id": 10184551516,
+      "type": "give_way",
+      "x_m": 2168.382571095368,
+      "y_m": 1230.3521051919088,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "241114897:1:forward"
+      ]
+    },
+    {
+      "osm_id": 10195832383,
+      "type": "give_way",
+      "x_m": 1338.8658963314956,
+      "y_m": 597.7738721389323,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31366479:13:forward"
+      ]
+    },
+    {
+      "osm_id": 10766124834,
+      "type": "give_way",
+      "x_m": 1186.9032486495562,
+      "y_m": 243.73679503332824,
+      "direction": null,
+      "approach_edge_ids": [
+        "1133828686:1:forward"
+      ]
+    },
+    {
+      "osm_id": 10862724775,
+      "type": "stop",
+      "x_m": 266.17974665993825,
+      "y_m": 1140.8033695723861,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "479165913:0:forward"
+      ]
+    },
+    {
+      "osm_id": 10862724776,
+      "type": "stop",
+      "x_m": 281.3164908089093,
+      "y_m": 1128.1751546803862,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "130009645:13:forward"
+      ]
+    },
+    {
+      "osm_id": 11007933113,
+      "type": "give_way",
+      "x_m": 563.8675374288578,
+      "y_m": 1490.9135408457369,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172756659:13:forward"
+      ]
+    },
+    {
+      "osm_id": 11013956898,
+      "type": "give_way",
+      "x_m": 442.18710688885767,
+      "y_m": 2401.1860728673637,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "338931185:11:forward"
+      ]
+    },
+    {
+      "osm_id": 11508518566,
+      "type": "give_way",
+      "x_m": 270.1819326917175,
+      "y_m": 1602.204824898392,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1338940259:1:forward"
+      ]
+    },
+    {
+      "osm_id": 11577787484,
+      "type": "stop",
+      "x_m": 306.54739737627096,
+      "y_m": 2206.6395233273506,
+      "direction": "backward",
+      "approach_edge_ids": []
+    },
+    {
+      "osm_id": 11768691051,
+      "type": "give_way",
+      "x_m": 829.3070941232145,
+      "y_m": 948.1371636064723,
+      "direction": null,
+      "approach_edge_ids": [
+        "1122667865:0:forward"
+      ]
+    },
+    {
+      "osm_id": 13190276984,
+      "type": "give_way",
+      "x_m": 860.8178520908114,
+      "y_m": 308.0190741112456,
+      "direction": null,
+      "approach_edge_ids": [
+        "179451724:1:forward",
+        "179451724:2:backward"
+      ]
+    },
+    {
+      "osm_id": 13252677727,
+      "type": "give_way",
+      "x_m": 1310.5881847752607,
+      "y_m": 1291.9476681221277,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1361104756:1:forward"
+      ]
+    },
+    {
+      "osm_id": 13252677728,
+      "type": "give_way",
+      "x_m": 1335.2371123082703,
+      "y_m": 1278.5018121860921,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1120094586:6:forward"
+      ]
+    },
+    {
+      "osm_id": 13285133555,
+      "type": "give_way",
+      "x_m": 530.5005687699886,
+      "y_m": 794.3871062509716,
+      "direction": null,
+      "approach_edge_ids": [
+        "403844764:3:forward"
+      ]
+    },
+    {
+      "osm_id": 13476447952,
+      "type": "give_way",
+      "x_m": 1727.0502404491417,
+      "y_m": 2058.5297701852396,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "27239590:1:backward"
+      ]
+    },
+    {
+      "osm_id": 13476447953,
+      "type": "give_way",
+      "x_m": 1749.7563276192523,
+      "y_m": 2052.534837680869,
+      "direction": "backward",
+      "approach_edge_ids": [
+        "27239567:1:backward"
+      ]
+    },
+    {
+      "osm_id": 13484330283,
+      "type": "give_way",
+      "x_m": 1438.1373500945047,
+      "y_m": 1478.6085075540468,
+      "direction": null,
+      "approach_edge_ids": [
+        "172897189:3:forward"
+      ]
+    },
+    {
+      "osm_id": 13884262313,
+      "type": "give_way",
+      "x_m": 2066.812716099317,
+      "y_m": 715.2057607825845,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "31370095:18:forward"
+      ]
+    },
+    {
+      "osm_id": 13884262314,
+      "type": "give_way",
+      "x_m": 1012.6564801884815,
+      "y_m": 1536.0582750122994,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "172948684:3:forward"
+      ]
+    },
+    {
+      "osm_id": 13884262315,
+      "type": "give_way",
+      "x_m": 277.3951717566233,
+      "y_m": 1553.5772890411317,
+      "direction": "forward",
+      "approach_edge_ids": [
+        "1185065115:4:forward"
+      ]
+    }
+  ],
+  "stop_rule": {
+    "type": "stop_before_sign",
+    "description": "Перед знаком STOP автомобиль должен остановиться; точка контроля совпадает с координатой знака."
+  },
   "signal_stop_rule": {
     "type": "distance_before_signal",
     "description": "Среда проверяет остановку на настраиваемом расстоянии перед сигналом; стоп-линии нет."

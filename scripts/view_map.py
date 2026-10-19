@@ -6,6 +6,7 @@ from __future__ import annotations
 import argparse
 import json
 import sys
+import time
 import cv2
 import numpy as np
 from dataclasses import dataclass
@@ -17,6 +18,8 @@ PROJECT_ROOT = Path(__file__).resolve().parents[1]
 if str(PROJECT_ROOT) not in sys.path:
     sys.path.insert(0, str(PROJECT_ROOT))
 
+from src.simulation.traffic import signal_phase
+
 
 WINDOW_SIZE = (1280, 800)
 BACKGROUND = (21, 25, 31)
@@ -27,6 +30,10 @@ START = (62, 196, 121)
 GOAL = (229, 83, 80)
 HOVER = (255, 208, 74)
 TEXT = (235, 239, 244)
+STOP_COLOR = (225, 65, 65)
+GIVE_WAY_COLOR = (245, 181, 56)
+UNATTACHED_COLOR = (160, 160, 160)
+SIGNAL_COLORS = {"red": (235, 65, 65), "green": (54, 211, 105), "yellow": (245, 192, 55)}
 
 # Калибровка map.png относительно локальных координат MapData.
 # Она получена сопоставлением контуров зданий с их растровым отображением.
@@ -235,6 +242,48 @@ def draw_marker(pygame: Any, surface: Any, camera: Camera, point: tuple[float, f
     surface.blit(rendered, (position[0] + 13, position[1] - 12))
 
 
+def draw_signs(pygame: Any, surface: Any, camera: Camera, signs: list[dict[str, Any]]) -> None:
+    """Отладочный слой OSM-знаков; серый цвет означает отсутствие привязки к дороге."""
+    width, height = surface.get_size()
+    font = pygame.font.Font(None, 17)
+    for sign in signs:
+        x, y = camera.world_to_screen((sign["x_m"], sign["y_m"]), (width, height))
+        if not (-20 <= x <= width + 20 and -20 <= y <= height + 20):
+            continue
+        color = (STOP_COLOR if sign["type"] == "stop" else GIVE_WAY_COLOR)
+        if not sign.get("approach_edge_ids"):
+            color = UNATTACHED_COLOR
+        pygame.draw.circle(surface, color, (x, y), 7)
+        pygame.draw.circle(surface, BACKGROUND, (x, y), 7, 1)
+        label = "S" if sign["type"] == "stop" else "Y"
+        surface.blit(font.render(label, True, BACKGROUND), (x - 4, y - 6))
+
+
+def draw_signals(pygame: Any, surface: Any, camera: Camera,
+                 signals: list[dict[str, Any]], elapsed_s: float) -> None:
+    """Показывает текущую фазу и оставшиеся секунды для каждого светофора."""
+    width, height = surface.get_size()
+    font = pygame.font.Font(None, 19)
+    for signal in signals:
+        x, y = camera.world_to_screen((signal["x_m"], signal["y_m"]), (width, height))
+        if not (-60 <= x <= width + 20 and -20 <= y <= height + 20):
+            continue
+        phases = signal.get("phases") or []
+        if phases:
+            state, remaining_s = signal_phase(phases, elapsed_s)
+            color = SIGNAL_COLORS.get(state, UNATTACHED_COLOR)
+            label = f"{remaining_s}s"
+        else:
+            color = UNATTACHED_COLOR
+            label = "?"
+        pygame.draw.circle(surface, BACKGROUND, (x, y), 11)
+        pygame.draw.circle(surface, color, (x, y), 8)
+        timer = font.render(label, True, TEXT)
+        label_bg = pygame.Rect(x + 11, y - 9, timer.get_width() + 4, timer.get_height() + 2)
+        pygame.draw.rect(surface, BACKGROUND, label_bg, border_radius=3)
+        surface.blit(timer, (x + 13, y - 8))
+
+
 def draw_building_outline(
     pygame: Any,
     surface: Any,
@@ -311,6 +360,8 @@ def main() -> None:
     args = parse_args()
     map_data = load_map_data(args.map_data)
     buildings = map_data["buildings"]
+    signs = map_data.get("signs", [])
+    signals = map_data.get("signals", [])
 
     try:
         import pygame
@@ -321,6 +372,7 @@ def main() -> None:
     window = pygame.display.set_mode(WINDOW_SIZE, pygame.RESIZABLE)
     pygame.display.set_caption("Neva Drive - выбор пункта А и Б")
     clock = pygame.time.Clock()
+    signal_start_time = time.perf_counter()
     camera = fit_camera(buildings, window.get_size())
     map_image = pygame.image.load(args.map_image).convert() if args.map_image.exists() else None
     if map_image is not None:
@@ -336,6 +388,7 @@ def main() -> None:
     start_building: dict[str, Any] | None = None
     goal_building: dict[str, Any] | None = None
     dragging = False
+    show_signs = False
     previous_mouse = (0, 0)
     running = True
 
@@ -345,6 +398,8 @@ def main() -> None:
                 running = False
             elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
                 running = False
+            elif event.type == pygame.KEYDOWN and event.key == pygame.K_x:
+                show_signs = not show_signs
             elif event.type == pygame.MOUSEBUTTONDOWN:
                 if event.button == 1:
                     if map_image is not None and not camera.image_rect(pygame, map_image.get_size(), window.get_size()).collidepoint(event.pos):
@@ -401,6 +456,10 @@ def main() -> None:
             window.set_clip(camera.image_rect(pygame, map_image.get_size(), window.get_size()))
             draw_building_boundaries(pygame, window, camera, buildings)
 
+        if show_signs:
+            draw_signs(pygame, window, camera, signs)
+        draw_signals(pygame, window, camera, signals, time.perf_counter() - signal_start_time)
+
         hovered_building = building_at(camera.screen_to_world(pygame.mouse.get_pos(), window.get_size()), buildings)
         draw_building_outline(pygame, window, camera, hovered_building, HOVER, 2)
         draw_building_outline(pygame, window, camera, start_building, START, 4)
@@ -420,7 +479,7 @@ def main() -> None:
             message = "Левая кнопка: выберите пункт Б"
         else:
             message = f"А и Б сохранены в {args.selection_output.name}. Новый левый клик начнёт выбор заново"
-        help_text = "Жёлтый контур - под курсором; зелёный/красный - здания А/Б"
+        help_text = "Жёлтый контур - под курсором; зелёный/красный - здания А/Б; X - знаки"
         window.blit(font.render(message, True, TEXT), (18, 16))
         window.blit(font.render(help_text, True, TEXT), (18, 42))
         pygame.display.flip()

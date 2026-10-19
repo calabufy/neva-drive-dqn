@@ -17,6 +17,7 @@ if str(PROJECT_ROOT) not in sys.path:
 from src.map.json_loader import index_nodes, load_osm, load_trafficlights
 from src.map.projection import projection_from_nodes
 from src.map.road_network import build_road_network
+from src.map.preprocessing import is_drivable_way
 
 
 def parse_args() -> argparse.Namespace:
@@ -86,22 +87,66 @@ def prepare_buildings(elements: list[dict[str, Any]], projection: Any) -> list[d
 
 
 def prepare_signals(
-    nodes: dict[int, dict[str, Any]], projection: Any, programs: dict[int, list[dict[str, Any]]]
+    nodes: dict[int, dict[str, Any]], projection: Any,
+    programs: dict[int, list[dict[str, Any]]]
 ) -> list[dict[str, Any]]:
-    """Подготавливает позиции сигналов; стоп-линии намеренно не создаются."""
+    """Готовит светофоры из YAML без привязки к направлению движения."""
     signals: list[dict[str, Any]] = []
     for node_id, node in nodes.items():
-        if node.get("tags", {}).get("highway") != "traffic_signals":
+        if node.get("tags", {}).get("highway") != "traffic_signals" or node_id not in programs:
             continue
         x_m, y_m = projection.project(node["lat"], node["lon"])
         signals.append({
             "osm_id": node_id,
             "x_m": x_m,
             "y_m": y_m,
-            "phases": programs.get(node_id),
-            "is_programmed": node_id in programs,
+            "phases": programs[node_id],
+            "is_programmed": True,
         })
     return signals
+
+
+def prepare_signs(
+    elements: list[dict[str, Any]], nodes: dict[int, dict[str, Any]],
+    edges: list[dict[str, Any]], projection: Any,
+) -> list[dict[str, Any]]:
+    """Привязывает STOP и GIVE WAY к подъездным рёбрам по направлению OSM."""
+    edge_ids = {edge["id"] for edge in edges}
+    approaches: dict[int, set[str]] = {}
+    for way in elements:
+        if not is_drivable_way(way):
+            continue
+        way_nodes = way["nodes"]
+        for index, node_id in enumerate(way_nodes):
+            if index and way.get("id") is not None:
+                edge_id = f"{way['id']}:{index - 1}:forward"
+                if edge_id in edge_ids:
+                    approaches.setdefault(node_id, set()).add(edge_id)
+            if index < len(way_nodes) - 1:
+                edge_id = f"{way['id']}:{index}:backward"
+                if edge_id in edge_ids:
+                    approaches.setdefault(node_id, set()).add(edge_id)
+
+    signs = []
+    for node_id, node in sorted(nodes.items()):
+        kind = node.get("tags", {}).get("highway")
+        if kind not in {"stop", "give_way"}:
+            continue
+        direction = node["tags"].get("direction")
+        attached = sorted(
+            edge_id for edge_id in approaches.get(node_id, set())
+            if direction not in {"forward", "backward"} or edge_id.endswith(f":{direction}")
+        )
+        x_m, y_m = projection.project(node["lat"], node["lon"])
+        signs.append({
+            "osm_id": node_id,
+            "type": kind,
+            "x_m": x_m,
+            "y_m": y_m,
+            "direction": direction,
+            "approach_edge_ids": attached,
+        })
+    return signs
 
 
 def main() -> None:
@@ -120,6 +165,7 @@ def main() -> None:
                              if not (e['type'] == 'relation' and e['id'] in ids)] + relations
     buildings = prepare_buildings(building_elements, projection)
     signals = prepare_signals(road_nodes, projection, load_trafficlights(args.trafficlights))
+    signs = prepare_signs(road_elements, road_nodes, edges, projection)
 
     payload = {
         "version": 1,
@@ -142,6 +188,11 @@ def main() -> None:
         "turn_restrictions": restrictions,
         "buildings": buildings,
         "signals": signals,
+        "signs": signs,
+        "stop_rule": {
+            "type": "stop_before_sign",
+            "description": "Перед знаком STOP автомобиль должен остановиться; точка контроля совпадает с координатой знака.",
+        },
         "signal_stop_rule": {
             "type": "distance_before_signal",
             "description": "Среда проверяет остановку на настраиваемом расстоянии перед сигналом; стоп-линии нет.",
@@ -156,7 +207,7 @@ def main() -> None:
         f"MapData создан: {args.output}\n"
         f"узлов: {len(nodes)}, направленных рёбер: {len(edges)}, "
         f"ограничений поворота: {len(restrictions)}, зданий: {len(buildings)}, "
-        f"сигналов: {len(signals)}"
+        f"сигналов: {len(signals)}, знаков: {len(signs)}"
     )
 
 
